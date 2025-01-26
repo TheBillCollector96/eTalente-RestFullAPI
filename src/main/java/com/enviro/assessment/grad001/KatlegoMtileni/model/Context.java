@@ -1,5 +1,7 @@
 package com.enviro.assessment.grad001.KatlegoMtileni.model;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -13,7 +15,7 @@ import jakarta.persistence.Table;
 public class Context {
 
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer contextId;
+	private Integer contextID;
 	
 	@Column(nullable = false, length = 30)
 	private String destination;
@@ -45,13 +47,28 @@ public class Context {
 	@Column(nullable = false)
 	private Boolean directionOpp;
 
-    //@OneToMany(mappedBy = "context")
-    //private List<Behavior> behaviors;
+    @OneToMany(mappedBy = "context")
+    private List<Coupon_Usage> usages;
     
     public Context() {}
     
+    public Context(Integer contextId, String destination, String passanger, String weather, Integer temperature, String time, Boolean toCouponGEQ5min, Boolean toCouponGEQ15min, Boolean toCouponGEQ25min, Boolean directionSame, Boolean directionOpp, List<Coupon_Usage> usages) {
+		this.contextID = contextId;
+		this.destination = destination;
+		this.passanger = passanger;
+		this.weather = weather;
+		this.temperature = temperature;
+		this.time = time;
+		this.toCouponGEQ5min = toCouponGEQ5min;
+		this.toCouponGEQ15min = toCouponGEQ15min;
+		this.toCouponGEQ25min = toCouponGEQ25min;
+		this.directionSame = directionSame;
+		this.directionOpp = directionOpp;
+		this.usages = usages;
+	}
+    
     public Context(Integer contextId, String destination, String passanger, String weather, Integer temperature, String time, Boolean toCouponGEQ5min, Boolean toCouponGEQ15min, Boolean toCouponGEQ25min, Boolean directionSame, Boolean directionOpp) {
-		this.contextId = contextId;
+		this.contextID = contextId;
 		this.destination = destination;
 		this.passanger = passanger;
 		this.weather = weather;
@@ -65,13 +82,13 @@ public class Context {
 	}
 
 
-	public Integer getContextId() {
-		return contextId;
+	public Integer getContextID() {
+		return contextID;
 	}
 
 
-	public void setContextId(Integer contextId) {
-		this.contextId = contextId;
+	public void setContextID(Integer contextId) {
+		this.contextID = contextId;
 	}
 
 
@@ -123,7 +140,54 @@ public class Context {
 	public void setTime(String time) {
 		this.time = time;
 	}
+
+	public Boolean getToCouponGEQ5min() {
+		return toCouponGEQ5min;
+	}
+
+	public void setToCouponGEQ5min(Boolean toCouponGEQ5min) {
+		this.toCouponGEQ5min = toCouponGEQ5min;
+	}
+
+	public Boolean getToCouponGEQ15min() {
+		return toCouponGEQ15min;
+	}
+
+	public void setToCouponGEQ15min(Boolean toCouponGEQ15min) {
+		this.toCouponGEQ15min = toCouponGEQ15min;
+	}
+
+	public Boolean getToCouponGEQ25min() {
+		return toCouponGEQ25min;
+	}
+
+	public void setToCouponGEQ25min(Boolean toCouponGEQ25min) {
+		this.toCouponGEQ25min = toCouponGEQ25min;
+	}
+
+	public Boolean getDirectionSame() {
+		return directionSame;
+	}
+
+	public void setDirectionSame(Boolean directionSame) {
+		this.directionSame = directionSame;
+	}
+
+	public Boolean getDirectionOpp() {
+		return directionOpp;
+	}
+
+	public void setDirectionOpp(Boolean directionOpp) {
+		this.directionOpp = directionOpp;
+	}
+
+	public List<Coupon_Usage> getUsages() {
+		return usages;
+	}
+
+	public void setUsages(List<Coupon_Usage> usages) {
+		this.usages = usages;
+	}
     
-    
-    
+	
 }

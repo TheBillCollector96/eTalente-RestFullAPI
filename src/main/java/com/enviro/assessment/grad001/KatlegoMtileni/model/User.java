@@ -1,5 +1,7 @@
 package com.enviro.assessment.grad001.KatlegoMtileni.model;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -44,10 +46,23 @@ public class User {
 	@Column(nullable = false, length = 30)
 	private String car;
 
-    //@OneToMany(mappedBy = "user")
-    //private List<Behavior> behaviors;
+	@OneToMany(mappedBy = "user")
+    private List<Coupon_Usage> usages;
 
 	public User() {}
+	
+	public User(Integer userID, String gender, int age, String maritalStatus, boolean hasChildren, String education, String occupation, String income, String car, List<Coupon_Usage> usages) {
+		this.userID = userID;
+		this.gender = gender;
+		this.age = age;
+		this.maritalStatus = maritalStatus;
+		this.hasChildren = hasChildren;
+		this.education = education;
+		this.occupation = occupation;
+		this.income = income;
+		this.car = car;
+		this.usages = usages;
+	}
 	
 	public User(Integer userID, String gender, int age, String maritalStatus, boolean hasChildren, String education, String occupation, String income, String car) {
 		this.userID = userID;
@@ -131,6 +146,14 @@ public class User {
 
 	public void setCar(String car) {
 		this.car = car;
+	}
+
+	public List<Coupon_Usage> getUsages() {
+		return usages;
+	}
+
+	public void setUsages(List<Coupon_Usage> usages) {
+		this.usages = usages;
 	}
 	
 	
