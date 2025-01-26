@@ -28,20 +28,7 @@ import com.enviro.assessment.grad001.KatlegoMtileni.model.User;
 @RequestMapping("/api")
 public class ControllerLayer {
 
-	/*@Autowired
-    private GenericService<Coupon, Integer> couponService;
-
-    @Autowired
-    private GenericService<User, Integer> userService;
-
-    @Autowired
-    private GenericService<Context, Integer> contextService;
-
-    @Autowired
-    private GenericService<Coupon_Usage, Integer> coupon_usageService;*/
 	
-    
-
 	@Autowired
     private UserService userService;
 
@@ -69,77 +56,86 @@ public class ControllerLayer {
     }
 
     @PostMapping("/user")
-    public User createUser(@RequestBody User user) {
-        return userService.save(user);
+    public String createUser(@RequestBody User user) {
+    	userService.save(user);
+        return "User Details Saved Successfully";
     }
 
     @PutMapping("/user/{id}")
-    public User updateUser(@PathVariable Integer id, @RequestBody User userDetails) {
+    public String updateUser(@PathVariable Integer id, @RequestBody User userDetails) {
     	userDetails.setUserID(id); // Ensure the ID matches for the update
-        return userService.update(userDetails);
+    	userService.update(userDetails);
+        return "User Details Updated Successfully";
     }
 
     @DeleteMapping("/user/{id}")
-    public void deleteUser(@PathVariable Integer id) {
-    	userService.deleteById(id);
+    public String deleteUser(@PathVariable Integer id) {
+    	userService.deleteById(id); 
+    	return "User Details Deleted Successfully";
     }
 	
     // Coupon Endpoints
     
-    @GetMapping("/coupons")
+    @GetMapping("/coupon")
     public List<Coupon> getAllCoupons() {
         return couponService.findAll();
     }
 
-    @GetMapping("/coupons/{id}")
+    @GetMapping("/coupon/{id}")
     public ResponseEntity<Coupon> getCouponById(@PathVariable Integer id) {
         Optional<Coupon> coupon = couponService.findById(id);
         return coupon.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    @PostMapping("/coupons")
-    public Coupon createCoupon(@RequestBody Coupon coupon) {
-        return couponService.save(coupon);
+    @PostMapping("/coupon")
+    public String createCoupon(@RequestBody Coupon coupon) {
+    	couponService.save(coupon);
+        return "Coupon Details Saved Successfully";
     }
 
-    @PutMapping("/coupons/{id}")
-    public Coupon updateCoupon(@PathVariable Integer id, @RequestBody Coupon couponDetails) {
+    @PutMapping("/coupon/{id}")
+    public String updateCoupon(@PathVariable Integer id, @RequestBody Coupon couponDetails) {
     	couponDetails.setCouponID(id); // Ensure the ID matches for the update
-        return couponService.update(couponDetails);
+    	couponService.update(couponDetails);
+        return "User Details Updated Successfully";
     }
 
-    @DeleteMapping("/coupons/{id}")
-    public void deleteCoupon(@PathVariable Integer id) {
+    @DeleteMapping("/coupon/{id}")
+    public String deleteCoupon(@PathVariable Integer id) {
     	couponService.deleteById(id);
+    	return "Coupon Details Deleted Successfully";
     }
 	
     // Context Endpoints
     
-    @GetMapping("/contexts")
+    @GetMapping("/context")
     public List<Context> getAllContexts() {
         return contextService.findAll();
     }
 
-    @GetMapping("/contexts/{id}")
+    @GetMapping("/context/{id}")
     public ResponseEntity<Context> getContextById(@PathVariable Integer id) {
         Optional<Context> context = contextService.findById(id);
         return context.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    @PostMapping("/contexts")
-    public Context createContext(@RequestBody Context context) {
-        return contextService.save(context);
+    @PostMapping("/context")
+    public String createContext(@RequestBody Context context) {
+    	contextService.save(context);
+        return "Context Details Saved Successfully";
     }
 
-    @PutMapping("/contexts/{id}")
-    public Context updateContext(@PathVariable Integer id, @RequestBody Context contextDetails) {
+    @PutMapping("/context/{id}")
+    public String updateContext(@PathVariable Integer id, @RequestBody Context contextDetails) {
     	contextDetails.setContextID(id); // Ensure the ID matches for the update
-        return contextService.update(contextDetails);
+    	contextService.update(contextDetails);
+        return "Context Details Updated Successfully";
     }
 
-    @DeleteMapping("/contexts/{id}")
-    public void deleteContext(@PathVariable Integer id) {
+    @DeleteMapping("/context/{id}")
+    public String deleteContext(@PathVariable Integer id) {
     	contextService.deleteById(id);
+    	return "Context Details Deleted Successfully";
     }
     
     // Context_Usage Endpoints
@@ -156,19 +152,22 @@ public class ControllerLayer {
     }
 
     @PostMapping("/coupon_usage")
-    public Coupon_Usage createCoupon_Usage(@RequestBody Coupon_Usage usage) {
-        return coupon_usageService.save(usage);
+    public String createCoupon_Usage(@RequestBody Coupon_Usage usage) {
+    	coupon_usageService.save(usage);
+        return "Coupon Usage Details Saved Successfully";
     }
 
     @PutMapping("/coupon_usage/{id}")
-    public Coupon_Usage updateCoupon_Usage(@PathVariable Integer id, @RequestBody Coupon_Usage coupon_usageDetails) {
+    public String updateCoupon_Usage(@PathVariable Integer id, @RequestBody Coupon_Usage coupon_usageDetails) {
     	coupon_usageDetails.setUsageID(id); // Ensure the ID matches for the update
-        return coupon_usageService.update(coupon_usageDetails);
+    	coupon_usageService.update(coupon_usageDetails);
+        return "Coupon_Usage Details Updated Successfully";
     }
 
     @DeleteMapping("/coupon_usage/{id}")
-    public void deleteCoupon_Usage(@PathVariable Integer id) {
+    public String deleteCoupon_Usage(@PathVariable Integer id) {
     	coupon_usageService.deleteById(id);
+    	return "Coupon Usage Details Deleted Successfully";
     }
     
  // Find coupon_usage by userId

@@ -7,6 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 @NoRepositoryBean
 public interface GenericRepository<T, ID> extends JpaRepository<T, ID>  {
-
-	
+	//Communicates directly with the Database based on specific entity generic class
 }

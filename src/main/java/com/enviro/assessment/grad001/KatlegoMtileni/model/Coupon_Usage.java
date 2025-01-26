@@ -10,7 +10,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "coupon")
+@Table(name = "coupon_usage")
 public class Coupon_Usage {
 
 	@Id
