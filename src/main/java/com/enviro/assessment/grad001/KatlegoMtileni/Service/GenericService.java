@@ -12,6 +12,7 @@ public class GenericService<T, ID> {
 
 	private final GenericRepository<T, ID> repository;
 
+	//Receives an instance of the specific repository to communicate the database with
     public GenericService(GenericRepository<T, ID> repository) {
         this.repository = repository;
     }
