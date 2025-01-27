@@ -1,6 +1,6 @@
-# Assessment Project - Katlego Mtileni
+# Assessment Project - Katlego Mtileni - eTalente Spring Boot RestFull API
 
-This is a Spring Boot application developed for an assessment project. The project demonstrates a RESTful API built using modern Java practices, featuring endpoints for managing specific resources.
+This is a Spring Boot application developed for an assessment project at eTalente. The project demonstrates a RESTful API built using modern Java practices, featuring endpoints for managing specific resources generically.
 
 ## Table of Contents
 
@@ -29,12 +29,12 @@ To get started with this project:
 
 1. Clone the repository:
    ```bash
-   git clone <repository-url>
+   git clone [<repository-url>](https://github.com/TheBillCollector96/eTalente-RestFullAPI.git)
    ```
 
 2. Navigate to the project directory:
    ```bash
-   cd assessment-grad001-katlegomtileni
+   cd assessment.grad001.katlegomtileni
    ```
 
 3. Build the project:
@@ -63,7 +63,7 @@ This project includes the following features:
 - **Swagger Integration**:
   - Interactive API documentation for testing and exploring endpoints.
 - **Database Support**:
-  - Integration with a relational database (e.g., MySQL, PostgreSQL, or H2).
+  - Integration with a relational database (In-Memory H2).
 - **Testing Suite**:
   - Unit and integration tests using JUnit and Mockito.
 
@@ -103,6 +103,8 @@ To ensure the application works as expected, execute the test suite:
 
 2. Check test coverage reports (if configured).
 
+3. Postman can also be used as an alternative to test the endpoints of the api
+
 ### Technologies Used in Testing
 - **JUnit**: Unit testing framework.
 - **Mockito**: For mocking dependencies during tests.
@@ -128,4 +130,4 @@ Contributions to this project are welcome! Please follow these steps:
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the eTalente License. See the [LICENSE](LICENSE) file for details.
